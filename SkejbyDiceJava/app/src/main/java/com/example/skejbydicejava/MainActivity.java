@@ -2,6 +2,7 @@ package com.example.skejbydicejava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView playerSips, opp1Sips, opp2Sips, opp3Sips;
     private TextView playerName, opp1Name, opp2Name, opp3Name;
     private Player player, opp1, opp2, opp3;
-    private int phase;
+    private MediaPlayer diceRollSound;
 
 
     @Override
@@ -35,40 +36,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //setUpComponents();
-        //setDefaultValues();
+        diceRollSound = MediaPlayer.create(MainActivity.this,R.raw.diceroll);
 
         player = new Player("Søren");
         opp1 = new Player("Nikolaj");
         opp2 = new Player("Bjørn");
         opp3 = new Player("Christian");
 
-        playerName = findViewById(R.id.text_view_playerName);
-        opp1Name = findViewById(R.id.text_view_opp1Name);
-        opp2Name = findViewById(R.id.text_view_opp2Name);
-        opp3Name = findViewById(R.id.text_view_opp3Name);
-
-        playerName.setText(player.getName());
-        opp1Name.setText(opp1.getName());
-        opp2Name.setText(opp2.getName());
-        opp3Name.setText(opp3.getName());
-
-        playerSips = findViewById(R.id.text_view_playerSips);
-        opp1Sips = findViewById(R.id.text_view_opp1Sips);
-        opp2Sips = findViewById(R.id.text_view_opp2Sips);
-        opp3Sips = findViewById(R.id.text_view_opp3Sips);
-
-        imageViewDie1 = findViewById(R.id.image_view_die1);
-        imageViewDie2 = findViewById(R.id.image_view_die2);
-
-        imageViewOpp1 = findViewById(R.id.image_view_opp1);
-        imageViewOpp2 = findViewById(R.id.image_view_opp2);
-        imageViewOpp3 = findViewById(R.id.image_view_opp3);
-
-        rollButton = findViewById(R.id.roll_button);
-
+        setUpComponents();
         updateSips();
+        setDefaultValues();
+        setClickListeners();
 
+    }
+
+    private void setClickListeners() {
         imageViewOpp1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,11 +77,46 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 attackDie1 = rollDie(imageViewDie1);
                 attackDie2 = rollDie(imageViewDie2);
+                rollButton.setEnabled(false);
+                imageViewOpp1.setEnabled(true);
+                imageViewOpp2.setEnabled(true);
+                imageViewOpp3.setEnabled(true);
             }
         });
-
     }
 
+    private void setDefaultValues() {
+        rollButton.setEnabled(true);
+        imageViewOpp1.setEnabled(false);
+        imageViewOpp2.setEnabled(false);
+        imageViewOpp3.setEnabled(false);
+    }
+
+    private void setUpComponents() {
+        playerName = findViewById(R.id.text_view_playerName);
+        opp1Name = findViewById(R.id.text_view_opp1Name);
+        opp2Name = findViewById(R.id.text_view_opp2Name);
+        opp3Name = findViewById(R.id.text_view_opp3Name);
+
+        playerName.setText(player.getName());
+        opp1Name.setText(opp1.getName());
+        opp2Name.setText(opp2.getName());
+        opp3Name.setText(opp3.getName());
+
+        playerSips = findViewById(R.id.text_view_playerSips);
+        opp1Sips = findViewById(R.id.text_view_opp1Sips);
+        opp2Sips = findViewById(R.id.text_view_opp2Sips);
+        opp3Sips = findViewById(R.id.text_view_opp3Sips);
+
+        imageViewDie1 = findViewById(R.id.image_view_die1);
+        imageViewDie2 = findViewById(R.id.image_view_die2);
+
+        imageViewOpp1 = findViewById(R.id.image_view_opp1);
+        imageViewOpp2 = findViewById(R.id.image_view_opp2);
+        imageViewOpp3 = findViewById(R.id.image_view_opp3);
+
+        rollButton = findViewById(R.id.roll_button);
+    }
 
 
     private int attackValue() {
@@ -123,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private int rollDie(ImageView imageViewDie) {
-
+        diceRollSound.start();
         int randomNumber = rng.nextInt(6) + 1;
 
         switch (randomNumber) {
@@ -146,10 +163,6 @@ public class MainActivity extends AppCompatActivity {
                 imageViewDie.setImageResource(R.drawable.d6);
                 break;
         }
-        rollButton.setEnabled(false);
-        imageViewOpp1.setEnabled(true);
-        imageViewOpp2.setEnabled(true);
-        imageViewOpp3.setEnabled(true);
         return randomNumber;
     }
 }
