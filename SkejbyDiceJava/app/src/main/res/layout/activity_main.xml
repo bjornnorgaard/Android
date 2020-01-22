@@ -6,6 +6,91 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/text_view_playerSips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginBottom="24dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/image_view_die2"
+        app:layout_constraintStart_toEndOf="@+id/text_view_playerSipsText" />
+
+    <TextView
+        android:id="@+id/text_view_playerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Søren"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_playerSipsText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_playerSipsText"
+        android:layout_width="34dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="12dp"
+        android:text="Sips:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/image_view_die1"
+        app:layout_constraintStart_toStartOf="@+id/text_view_playerName" />
+
+    <TextView
+        android:id="@+id/text_view_opp3Sips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="12dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/text_view_opp3SipsText"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_opp3Name" />
+
+    <TextView
+        android:id="@+id/text_view_opp2Sips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="12dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/text_view_opp2SipsText"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_opp2Name" />
+
+    <TextView
+        android:id="@+id/text_view_opp1Sips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="12dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/text_view_opp1SipsText"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_opp1Name" />
+
+    <TextView
+        android:id="@+id/text_view_opp2SipsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Sips:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/text_view_opp2Name"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_opp2Name" />
+
+    <TextView
+        android:id="@+id/text_view_opp3SipsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Sips:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/text_view_opp3Name"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_opp3Name" />
+
     <ImageView
         android:id="@+id/image_view_die1"
         android:layout_width="100dp"
@@ -37,5 +122,80 @@
         app:layout_constraintBottom_toTopOf="@+id/roll_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/d1" />
+
+    <ImageView
+        android:id="@+id/image_view_opp1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_opp2"
+        app:srcCompat="@drawable/opp1" />
+
+    <ImageView
+        android:id="@+id/image_view_opp2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/opp2" />
+
+    <ImageView
+        android:id="@+id/image_view_opp3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_opp2"
+        app:srcCompat="@drawable/opp3" />
+
+    <TextView
+        android:id="@+id/text_view_opp1Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Nikolaj"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/image_view_opp1"
+        app:layout_constraintStart_toStartOf="@+id/image_view_opp1"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_opp1" />
+
+    <TextView
+        android:id="@+id/text_view_opp2Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Bjørn"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/image_view_opp2"
+        app:layout_constraintStart_toStartOf="@+id/image_view_opp2"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_opp2" />
+
+    <TextView
+        android:id="@+id/text_view_opp3Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Christian"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/image_view_opp3"
+        app:layout_constraintStart_toStartOf="@+id/image_view_opp3"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_opp3" />
+
+    <TextView
+        android:id="@+id/text_view_opp1SipsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Sips:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/text_view_opp1Name"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_opp1Name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
