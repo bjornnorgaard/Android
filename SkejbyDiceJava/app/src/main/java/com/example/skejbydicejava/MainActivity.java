@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewPos1Name, textViewPos2Name, textViewPos3Name, textViewPos4Name;
     private Player player1, player2, player3, player4;
     private MediaPlayer diceRollSound;
+    // private int[] tokens = {R.drawable.}
 
 
     @Override
@@ -44,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         setUpComponents();
         setDefaultValues();
         setClickListeners();
-
-
     }
 
     private void placePlayer(Player p) {
@@ -119,14 +118,6 @@ public class MainActivity extends AppCompatActivity {
         placePlayer(player3);
         placePlayer(player4);
 
-/*
-        textViewPos1Name.setText(player1.getName());
-        textViewPos2Name.setText(player2.getName());
-        textViewPos3Name.setText(player3.getName());
-        textViewPos4Name.setText(player4.getName());
-
- */
-
         playerSips = findViewById(R.id.text_view_pos1Sips);
         opp1Sips = findViewById(R.id.text_view_pos2Sips);
         opp2Sips = findViewById(R.id.text_view_pos3Sips);
@@ -135,9 +126,9 @@ public class MainActivity extends AppCompatActivity {
         imageViewDie1 = findViewById(R.id.image_view_die1);
         imageViewDie2 = findViewById(R.id.image_view_die2);
 
-        imageViewPos2 = findViewById(R.id.image_view_opp1);
-        imageViewPos3 = findViewById(R.id.image_view_opp2);
-        imageViewPos4 = findViewById(R.id.image_view_opp3);
+        imageViewPos2 = findViewById(R.id.image_view_pos2);
+        imageViewPos3 = findViewById(R.id.image_view_pos3);
+        imageViewPos4 = findViewById(R.id.image_view_pos4);
 
         rollButton = findViewById(R.id.roll_button);
     }
