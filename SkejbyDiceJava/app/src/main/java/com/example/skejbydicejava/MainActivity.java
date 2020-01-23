@@ -22,12 +22,12 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     private ImageView imageViewDie1, imageViewDie2;
     private ImageView imageViewPos2, imageViewPos3, imageViewPos4;
+    private TextView textViewPos1Sips, textViewPos2Sips, textViewPos3Sips, textViewPos4Sips;
+    private TextView textViewPos1Name, textViewPos2Name, textViewPos3Name, textViewPos4Name;
+    private TextView textViewMessage;
     private Button rollButton;
     private int attackDie1, attackDie2;
     private Random rng = new Random();
-    private TextView textViewPos1Sips, textViewPos2Sips, textViewPos3Sips, textViewPos4Sips;
-    private TextView textViewPos1Name, textViewPos2Name, textViewPos3Name, textViewPos4Name;
-    private Player player1, player2, player3, player4;
     private Player pos1Player, pos2Player, pos3Player, pos4Player;
     private List<Player> players;
     private MediaPlayer diceRollSound;
@@ -53,12 +53,7 @@ public class MainActivity extends AppCompatActivity {
         placePlayers();
 
         setClickListeners();
-
-
     }
-
-
-
 
     private void setClickListeners() {
         imageViewPos2.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 attack(pos2Player, attackValue());
                 rotatePlayers();
+                textViewMessage.setText(pos1Player.getName() + "'s turn. Roll!");
             }
         });
 
@@ -74,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 attack(pos3Player, attackValue());
                 rotatePlayers();
+                textViewMessage.setText(pos1Player.getName() + "'s turn. Roll!");
             }
         });
 
@@ -82,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 attack(pos4Player, attackValue());
                 rotatePlayers();
+                textViewMessage.setText(pos1Player.getName() + "'s turn. Roll!");
             }
         });
 
@@ -94,6 +92,12 @@ public class MainActivity extends AppCompatActivity {
                 imageViewPos2.setEnabled(true);
                 imageViewPos3.setEnabled(true);
                 imageViewPos4.setEnabled(true);
+                if(attackValue() > 1) {
+                    textViewMessage.setText("Who do you want to give " + attackValue() + " sips?");
+                } else {
+                    textViewMessage.setText("Who should drink a single sip?");
+                }
+
             }
         });
     }
@@ -157,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
         textViewPos3Sips = findViewById(R.id.text_view_pos3Sips);
         textViewPos4Sips = findViewById(R.id.text_view_pos4Sips);
 
+        textViewMessage = findViewById(R.id.text_view_message);
+
         imageViewDie1 = findViewById(R.id.image_view_die1);
         imageViewDie2 = findViewById(R.id.image_view_die2);
 
@@ -166,7 +172,6 @@ public class MainActivity extends AppCompatActivity {
 
         rollButton = findViewById(R.id.roll_button);
     }
-
 
     private int attackValue() {
         return (attackDie1 + attackDie2) / 2;
@@ -213,5 +218,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         return randomNumber;
+
     }
 }
