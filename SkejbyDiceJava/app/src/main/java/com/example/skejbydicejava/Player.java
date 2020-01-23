@@ -4,11 +4,17 @@ public class Player {
     private String name;
     private int sips;
     private int pos;
+    private int token;
 
-    public Player(String name, int pos){
+    public Player(String name, int pos,int token){
         this.name = name;
         this.pos = pos;
+        this.token = token;
         sips = 0;
+    }
+
+    public int getToken() {
+        return token;
     }
 
     public int getPos() {

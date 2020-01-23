@@ -23,12 +23,11 @@ public class MainActivity extends AppCompatActivity {
     private Button rollButton;
     private int attackDie1, attackDie2;
     private Random rng = new Random();
-    private TextView playerSips, opp1Sips, opp2Sips, opp3Sips;
+    private TextView textViewPos1Sips, textViewPos2Sips, textViewPos3Sips, textViewPos4Sips;
     private TextView textViewPos1Name, textViewPos2Name, textViewPos3Name, textViewPos4Name;
     private Player player1, player2, player3, player4;
+    private Player pos1Player, pos2Player, pos3Player, pos4Player;
     private MediaPlayer diceRollSound;
-    // private int[] tokens = {R.drawable.}
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,53 +36,76 @@ public class MainActivity extends AppCompatActivity {
 
         diceRollSound = MediaPlayer.create(MainActivity.this, R.raw.diceroll);
 
-        player1 = new Player("Søren", 1);
-        player2 = new Player("Nikolaj", 2);
-        player3 = new Player("Bjørn", 3);
-        player4 = new Player("Christian", 4);
+        player1 = new Player("Søren", 1, R.drawable.token1);
+        player2 = new Player("Nikolaj", 2, R.drawable.token2);
+        player3 = new Player("Bjørn", 3, R.drawable.token3);
+        player4 = new Player("Christian", 4, R.drawable.token4);
 
         setUpComponents();
+
         setDefaultValues();
+
+        placePlayers();
+
         setClickListeners();
+
+
+    }
+
+    private void placePlayers() {
+        placePlayer(player1);
+        placePlayer(player2);
+        placePlayer(player3);
+        placePlayer(player4);
     }
 
     private void placePlayer(Player p) {
         switch (p.getPos()) {
             case 1:
                 textViewPos1Name.setText(p.getName());
+                textViewPos1Sips.setText(""+p.getSips());
+                pos1Player = p;
                 break;
             case 2:
                 textViewPos2Name.setText(p.getName());
+                textViewPos2Sips.setText(""+p.getSips());
+                imageViewPos2.setImageResource(p.getToken());
+                pos2Player = p;
                 break;
             case 3:
                 textViewPos3Name.setText(p.getName());
+                textViewPos3Sips.setText(""+p.getSips());
+                imageViewPos3.setImageResource(p.getToken());
+                pos3Player = p;
                 break;
             case 4:
-                textViewPos4Name.setText(p.getName());
+                    textViewPos4Name.setText(p.getName());
+                textViewPos4Sips.setText(""+p.getSips());
+                imageViewPos4.setImageResource(p.getToken());
+    pos4Player = p;
                 break;
-        }
-
+}
     }
 
     private void setClickListeners() {
         imageViewPos2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                attack(player2, attackValue());
+                attack(pos2Player, attackValue());
             }
         });
 
         imageViewPos3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                attack(player3, attackValue());
+                attack(pos3Player, attackValue());
             }
         });
 
         imageViewPos4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                attack(player4, attackValue());
+                attack(pos4Player, attackValue());
             }
         });
 
@@ -113,15 +135,10 @@ public class MainActivity extends AppCompatActivity {
         textViewPos3Name = findViewById(R.id.text_view_pos3Name);
         textViewPos4Name = findViewById(R.id.text_view_pos4Name);
 
-        placePlayer(player1);
-        placePlayer(player2);
-        placePlayer(player3);
-        placePlayer(player4);
-
-        playerSips = findViewById(R.id.text_view_pos1Sips);
-        opp1Sips = findViewById(R.id.text_view_pos2Sips);
-        opp2Sips = findViewById(R.id.text_view_pos3Sips);
-        opp3Sips = findViewById(R.id.text_view_pos4Sips);
+        textViewPos1Sips = findViewById(R.id.text_view_pos1Sips);
+        textViewPos2Sips = findViewById(R.id.text_view_pos2Sips);
+        textViewPos3Sips = findViewById(R.id.text_view_pos3Sips);
+        textViewPos4Sips = findViewById(R.id.text_view_pos4Sips);
 
         imageViewDie1 = findViewById(R.id.image_view_die1);
         imageViewDie2 = findViewById(R.id.image_view_die2);
@@ -148,10 +165,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateSips() {
-        playerSips.setText("" + player1.getSips());
-        opp1Sips.setText("" + player2.getSips());
-        opp2Sips.setText("" + player3.getSips());
-        opp3Sips.setText("" + player4.getSips());
+        textViewPos1Sips.setText("" + player1.getSips());
+        textViewPos2Sips.setText("" + player2.getSips());
+        textViewPos3Sips.setText("" + player3.getSips());
+        textViewPos4Sips.setText("" + player4.getSips());
     }
 
     private int rollDie(ImageView imageViewDie) {
