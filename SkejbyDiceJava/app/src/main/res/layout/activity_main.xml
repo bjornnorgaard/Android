@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginLeft="6dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="6dp"
         android:text="0"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/image_view_die2"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
         app:layout_constraintStart_toEndOf="@+id/text_view_pos1SipsText" />
 
     <TextView
@@ -33,10 +33,10 @@
         android:id="@+id/text_view_pos1SipsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="6dp"
         android:text="Sips:"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/image_view_die1"
+        app:layout_constraintBottom_toTopOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/text_view_pos1Name" />
 
     <TextView
@@ -99,10 +99,10 @@
         android:id="@+id/image_view_die1"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/roll_button"
+        android:layout_marginStart="140dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_pos1Name"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/d1" />
 
@@ -111,21 +111,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="Roll"
         android:soundEffectsEnabled="false"
+        android:text="Roll"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/image_view_die2"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/roll_button"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="61dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_view_pos1Name"
+        app:layout_constraintStart_toEndOf="@+id/image_view_die1"
         app:srcCompat="@drawable/d1" />
 
     <ImageView
@@ -134,7 +134,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_view_pos3"
         app:srcCompat="@drawable/token2" />
@@ -216,5 +216,47 @@
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/lucky_die_pos2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_pos2SipsText"
+        app:srcCompat="@drawable/gl1" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_pos3SipsText"
+        app:srcCompat="@drawable/bluel1" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_pos4SipsText"
+        app:srcCompat="@drawable/redl1" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/roll_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/brownl1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
