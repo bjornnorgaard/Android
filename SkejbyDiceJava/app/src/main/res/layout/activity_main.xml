@@ -15,7 +15,7 @@
         android:layout_marginBottom="6dp"
         android:text="0"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintBottom_toTopOf="@+id/lucky_die_pos1"
         app:layout_constraintStart_toEndOf="@+id/text_view_pos1SipsText" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:layout_marginBottom="6dp"
         android:text="Sips:"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintBottom_toTopOf="@+id/lucky_die_pos1"
         app:layout_constraintStart_toStartOf="@+id/text_view_pos1Name" />
 
     <TextView
@@ -119,8 +119,8 @@
 
     <ImageView
         android:id="@+id/image_view_die2"
-        android:layout_width="61dp"
-        android:layout_height="54dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="6dp"
@@ -229,17 +229,18 @@
         app:srcCompat="@drawable/gl1" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/lucky_die_pos3"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_pos3SipsText"
         app:srcCompat="@drawable/bluel1" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/lucky_die_pos4"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="6dp"
@@ -250,7 +251,7 @@
         app:srcCompat="@drawable/redl1" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/lucky_die_pos1"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="6dp"
