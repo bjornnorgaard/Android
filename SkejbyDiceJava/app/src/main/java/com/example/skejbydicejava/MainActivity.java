@@ -123,6 +123,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void setClickListeners() {
+        imageViewLuckyDie1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attack(pos2Player, attackValue());
+                rotatePlayers();
+                textViewMessage.setText(pos1Player.getName() + "'s turn. Roll!");
+            }
+        });
+
         imageViewPos2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
                 textViewMessage.setText(pos1Player.getName() + "'s turn. Roll!");
             }
         });
+
+
 
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -30,7 +30,7 @@ public class MainActivityTest {
     @Test
     public void testPlayer() {
         assertEquals("Søren", p1.getName());
-        assertEquals(1, p1.getLuckyDieNumber());
+        assertEquals(1, p1.getLuckyDie().getNumber());
         assertEquals(1, p1.getPos());
         assertEquals(0, p1.getSips());
         assertEquals(R.drawable.token1, p1.getToken());
