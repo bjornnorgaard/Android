@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
+
 /*
     This game has XXX phases:
     Phase 0: Roll first time for attacking
@@ -27,23 +29,23 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewPos1Name, textViewPos2Name, textViewPos3Name, textViewPos4Name;
     private TextView textViewMessage;
     private Button rollButton;
-    private int attackDie1, attackDie2;
+    private Die attackDie1, attackDie2;
     private Random rng = new Random();
     private Player pos1Player, pos2Player, pos3Player, pos4Player;
     private List<Player> players;
-    private MediaPlayer diceRollSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_main);
         super.onCreate(savedInstanceState);
 
-        diceRollSound = MediaPlayer.create(MainActivity.this, R.raw.diceroll);
         players = new ArrayList<>();
         players.add(new Player("Søren", 1, "brown"));
         players.add(new Player("Nikolaj", 2, "green"));
         players.add(new Player("Bjørn", 3, "blue"));
         players.add(new Player("Christian", 4, "red"));
+        attackDie1 = new Die("white");
+        attackDie2 = new Die("white");
 
         setUpComponents();
 
@@ -95,40 +97,39 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     textViewPos1Name.setText(p.getName());
                     textViewPos1Sips.setText("" + p.getSips());
-                    imageViewLuckyDie1.setImageResource(p.getLuckyDie().getState());
+                    imageViewLuckyDie1.setImageResource(p.getLuckyDie().getImagge());
                     pos1Player = p;
                     break;
                 case 2:
                     textViewPos2Name.setText(p.getName());
                     textViewPos2Sips.setText("" + p.getSips());
                     imageViewPos2.setImageResource(p.getToken());
-                    imageViewLuckyDie2.setImageResource(p.getLuckyDie().getState());
+                    imageViewLuckyDie2.setImageResource(p.getLuckyDie().getImagge());
                     pos2Player = p;
                     break;
                 case 3:
                     textViewPos3Name.setText(p.getName());
                     textViewPos3Sips.setText("" + p.getSips());
                     imageViewPos3.setImageResource(p.getToken());
-                    imageViewLuckyDie3.setImageResource(p.getLuckyDie().getState());
+                    imageViewLuckyDie3.setImageResource(p.getLuckyDie().getImagge());
                     pos3Player = p;
                     break;
                 case 4:
                     textViewPos4Name.setText(p.getName());
                     textViewPos4Sips.setText("" + p.getSips());
                     imageViewPos4.setImageResource(p.getToken());
-                    imageViewLuckyDie4.setImageResource(p.getLuckyDie().getState());
+                    imageViewLuckyDie4.setImageResource(p.getLuckyDie().getImagge());
                     pos4Player = p;
                     break;
             }
         }
     }
+
     private void setClickListeners() {
         imageViewLuckyDie1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                attack(pos2Player, attackValue());
-                rotatePlayers();
-                textViewMessage.setText(pos1Player.getName() + "'s turn. Roll!");
+                pos1Player.getLuckyDie().roll(imageViewLuckyDie1);
             }
         });
 
@@ -160,17 +161,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                attackDie1 = rollDie(imageViewDie1);
-                attackDie2 = rollDie(imageViewDie2);
+                attackDie1.roll(imageViewDie1);
+                attackDie2.roll(imageViewDie2);
                 rollButton.setEnabled(false);
                 imageViewPos2.setEnabled(true);
                 imageViewPos3.setEnabled(true);
                 imageViewPos4.setEnabled(true);
-                if(attackValue() > 1) {
+                if (attackValue() > 1) {
                     textViewMessage.setText("Who do you want to give " + attackValue() + " sips?");
                 } else {
                     textViewMessage.setText("Who should drink a single sip?");
@@ -181,23 +181,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void rotatePlayers() {
-        for(Player p : players) {
-            if(p.getPos() == 4) {
+        for (Player p : players) {
+            if (p.getPos() == 4) {
                 p.setPos(1);
             } else {
-                p.setPos(p.getPos()+1);
+                p.setPos(p.getPos() + 1);
             }
         }
         placePlayers();
     }
 
 
-
-
-
-
     private int attackValue() {
-        return (attackDie1 + attackDie2) / 2;
+        return (attackDie1.getNumber() + attackDie2.getNumber()) / 2;
     }
 
     private void attack(Player p, int sips) {
@@ -216,31 +212,5 @@ public class MainActivity extends AppCompatActivity {
         textViewPos4Sips.setText("" + pos4Player.getSips());
     }
 
-    private int rollDie(ImageView imageViewDie) {
-        diceRollSound.start();
-        int randomNumber = rng.nextInt(6) + 1;
 
-        switch (randomNumber) {
-            case 1:
-                imageViewDie.setImageResource(R.drawable.d1);
-                break;
-            case 2:
-                imageViewDie.setImageResource(R.drawable.d2);
-                break;
-            case 3:
-                imageViewDie.setImageResource(R.drawable.d3);
-                break;
-            case 4:
-                imageViewDie.setImageResource(R.drawable.d4);
-                break;
-            case 5:
-                imageViewDie.setImageResource(R.drawable.d5);
-                break;
-            case 6:
-                imageViewDie.setImageResource(R.drawable.d6);
-                break;
-        }
-        return randomNumber;
-
-    }
 }
